@@ -1,10 +1,10 @@
 package miTiendita.productos;
 
 public class Producto {
-    int clave;
+    private int clave; //id
     String descripcion;
-    double punit;
-    int ctd;
+    private double punit; //precio
+    private int ctd; //contenido
 
     Producto(int clave, String descripcion, double punit)
     {
@@ -13,12 +13,12 @@ public class Producto {
         this.punit = punit;
     }
 
-    double getPunit()
+    public double getPunit()
     {
         return punit;
     }
 
-    int getCtd()
+    public int getCtd()
     {
         return ctd;
     }
@@ -26,5 +26,8 @@ public class Producto {
     public String toString()
     {
         return descripcion;
+    }
+    public int getClave(){
+        return this.clave;
     }
 }
