@@ -28,32 +28,46 @@ public class Venta {
         switch (this.diaSemana){
             case 1:
                 IDescto = new AdultoMayor();
+                break;
             case 2:
                 IDescto = new SinDescuento();
+                break;
             case 3:
                 IDescto = new MenonitaDescuento();
+                break;
             case 4:
                 IDescto = new FrutaDescuento();
+                break;
             case 5:
                 IDescto = new EmbutidosLacteos();
+                break;
             case 6:
                 IDescto = new SinDescuento();
+                break;
             case 7:
                 IDescto = new AdultoMayor();
+                break;
         }
     }
 
-    public double getTotal()
-    {
+    public List<LineaDeDetalle> getLineaDeDetalle(){
+        return this.ld;
+    }
+
+    public double getSubTotal(){
         double subTotal=0;
         for (LineaDeDetalle lineaD : ld) {
             subTotal = subTotal + (lineaD.ctd * lineaD.p.getPunit());
         }
-        double desc = IDescto.getDescto(this);
-        subTotal = subTotal - desc;
-        System.out.println(desc);
-        System.out.println(subTotal);
-        System.out.println(subTotal*1.16);
-        return subTotal*(1.16);
+        return subTotal;
     }
+    double calculateDesc(){
+        return IDescto.getDescto(this);
+    }
+
+    public double getTotal()
+    {
+        return (getSubTotal()-calculateDesc())*1.16;
+    }
+    
 }

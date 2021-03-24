@@ -10,4 +10,10 @@ public class LineaDeDetalle {
         this.p = p;
         this.ctd = ctd;
     }
+    public Producto getProducto(){
+        return this.p;
+    }
+    public double getCtd(){
+        return this.ctd;
+    }
 }
